@@ -31,6 +31,10 @@ public class PaddleController_L : MonoBehaviour
             forceApplied = false;  // Reset force application
         }
 
+
+    }
+
+    void FixedUpdate(){
         // Rotate forward to the target angle
         if (rotatingForward)
         {
@@ -66,7 +70,7 @@ public class PaddleController_L : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Apply force only if paddle is rotating forward and has not applied force yet
-        if (collision.gameObject.CompareTag("Ball") && rotatingForward && !forceApplied)
+        if (collision.gameObject.CompareTag("Player") && rotatingForward && !forceApplied)
         {
             Rigidbody ballRb = collision.gameObject.GetComponent<Rigidbody>();
             if (ballRb != null)
