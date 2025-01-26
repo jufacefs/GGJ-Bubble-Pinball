@@ -9,6 +9,8 @@ public class BubbleScript : MonoBehaviour
 
     private Animator animator;
 
+    private bool isDead = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,8 @@ public class BubbleScript : MonoBehaviour
 
     public void BubblePop()
     {
+        if (isDead) return;
+        isDead = true;
         Debug.Log("Player Killed");
         GameManagerScript.S.PlayerDeath();
         StartCoroutine(PopIt());
