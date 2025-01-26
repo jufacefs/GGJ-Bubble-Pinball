@@ -497,11 +497,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2029454503799811845, guid: c894c5d191dbb114abf908aa819efee0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.15
+      value: -4.44
       objectReference: {fileID: 0}
     - target: {fileID: 2029454503799811845, guid: c894c5d191dbb114abf908aa819efee0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 7.38
       objectReference: {fileID: 0}
     - target: {fileID: 2029454503799811845, guid: c894c5d191dbb114abf908aa819efee0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -826,6 +826,14 @@ PrefabInstance:
     - target: {fileID: 820655351495931245, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
       propertyPath: m_Name
       value: Flipper
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272730019043136940, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
+      propertyPath: motorForce
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272730019043136940, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
+      propertyPath: motorSpeed
+      value: -1000
       objectReference: {fileID: 0}
     - target: {fileID: 1838359999668357433, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
       propertyPath: m_LocalScale.x
@@ -1602,11 +1610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7964514339944180849, guid: 5b3e8cb60a24eba4badddfc502c45f71, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.4924609
+      value: -0.7478297
       objectReference: {fileID: 0}
     - target: {fileID: 7964514339944180849, guid: 5b3e8cb60a24eba4badddfc502c45f71, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.87033457
+      value: 0.66389066
       objectReference: {fileID: 0}
     - target: {fileID: 7964514339944180849, guid: 5b3e8cb60a24eba4badddfc502c45f71, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1622,7 +1630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7964514339944180849, guid: 5b3e8cb60a24eba4badddfc502c45f71, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -59.005
+      value: -96.805
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3024,7 +3032,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.25, y: 8, z: 0}
-  m_LocalScale: {x: 4.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 5.625, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
