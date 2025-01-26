@@ -1,89 +1,96 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HingeJoint))]
 public class PaddleController_R : MonoBehaviour
 {
-    public KeyCode activationKey = KeyCode.Q;  // Key to trigger paddle rotation
-    public float rotationAngle = 30f;          // The angle to rotate counterclockwise
-    public float rotationSpeed = 200f;         // Speed of the rotation
-    public float forceMagnitude = 10f;         // The force applied to the ball
+    [Header("Angles")]
+    public float closedAngle = -30f;
+    public float openedAngle = 30f;
 
-    private Quaternion initialRotation;
-    private Quaternion targetRotation;
-    private bool rotatingForward = false;
-    private bool rotatingBack = false;
-    private bool forceApplied = false;
+    [Header("Motor Settings")]
+    public float motorSpeed = -250f;   // Degrees per second
+    public float motorForce = 1000f;  // How strong the motor is
+
+    private HingeJoint hinge;
+    private JointMotor motor;
+
+    // Define states for clarity
+    private enum FlipperState { Idle, MovingUp, MovingDown }
+    private FlipperState currentState = FlipperState.Idle;
+
+    private float currentAngle = 0f;
 
     void Start()
     {
-        // Store the initial rotation of the paddle
-        initialRotation = transform.parent.rotation;
-        targetRotation = Quaternion.Euler(0, 0, transform.parent.eulerAngles.z + rotationAngle);
+        hinge = GetComponent<HingeJoint>();
+        hinge.useMotor = false;
+
+        // Initialize the motor with force
+        motor = hinge.motor;
+        motor.force = motorForce;
+        motor.targetVelocity = 0;
+        hinge.motor = motor;
+
+        // Debug.Log("Flipper initialized. Motor off.");
     }
 
     void Update()
     {
-        // When pressing Q, start rotating forward if not already rotating
-        if (Input.GetKeyDown(activationKey) && !rotatingForward && !rotatingBack)
+        currentAngle = NormalizeAngle(transform.localEulerAngles.z);
+        // Debug.Log($"Currenttttt paddle angle (localEulerAngles): {currentAngle}");
+        // Debug.Log($"Current state: {currentState}");
+
+        if (Input.GetKeyDown(KeyCode.Q) && currentState == FlipperState.Idle)
         {
-            rotatingForward = true;
-            forceApplied = false;  // Reset force application
+            // Debug.Log("Q key pressed. Moving flipper down.");
+
+            // Begin rotating "up" (towards openedAngle)
+            currentState = FlipperState.MovingDown;
+            hinge.useMotor = true;
+
+            motor.targetVelocity = motorSpeed;
+            hinge.motor = motor;
         }
 
+        switch (currentState)
+        {
+            case FlipperState.MovingUp:
+                // Debug.Log("Flipper is moving up.");
 
+                // If we've reached or exceeded the openedAngle, switch to moving down
+                if (Mathf.Abs(currentAngle - openedAngle) < 1.0f)
+                {
+                    // Debug.Log("Opened angle reached. Returning to Idle.");
+
+                    currentState = FlipperState.Idle;
+                    hinge.useMotor = false;
+                    // motor.targetVelocity = -motorSpeed;
+                    // hinge.motor = motor;
+                }
+                break;
+
+            case FlipperState.MovingDown:
+                // Debug.Log("Flipper is moving down.");
+                // Debug.Log($"Current paddle angle and Closed angle: {currentAngle}, {openedAngle}");
+
+                if (Mathf.Abs(currentAngle - closedAngle) < 1.0f)
+                {
+                    // Debug.Log("Closed angle reached. Switching to moving up.");
+
+                    currentState = FlipperState.MovingUp;
+                    motor.targetVelocity = -motorSpeed;
+                    hinge.motor = motor;
+                }
+                break;
+        }
     }
 
-    void FixedUpdate(){
-        // Rotate forward to the target angle
-        if (rotatingForward)
-        {
-            RotatePaddle(targetRotation, ref rotatingForward, true);
-        }
-
-        // Rotate back to the original position
-        if (rotatingBack)
-        {
-            RotatePaddle(initialRotation, ref rotatingBack, false);
-        }
-    }
-
-    void RotatePaddle(Quaternion targetRot, ref bool rotatingFlag, bool returning)
+    // Helper function to normalize angles between -180 to 180 degrees
+    private float NormalizeAngle(float angle)
     {
-        float step = rotationSpeed * Time.deltaTime;
-        transform.parent.rotation = Quaternion.RotateTowards(transform.parent.rotation, targetRot, step);
-
-        // Check if rotation is complete
-        if (Quaternion.Angle(transform.parent.rotation, targetRot) < 0.1f)
-        {
-            transform.parent.rotation = targetRot;
-            rotatingFlag = false;
-
-            // If rotation was forward, start returning back
-            if (returning)
-            {
-                rotatingBack = true;
-            }
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // Apply force only if paddle is rotating forward and has not applied force yet
-        if (collision.gameObject.CompareTag("Player") && rotatingForward && !forceApplied)
-        {
-            Rigidbody ballRb = collision.gameObject.GetComponent<Rigidbody>();
-            if (ballRb != null)
-            {
-                // Calculate force direction perpendicular to paddle, with a downward component
-                Vector3 forceDirection = -transform.up;
-                forceDirection.Normalize();
-
-                // Apply impulse force to the ball
-                ballRb.AddForce(forceDirection * forceMagnitude, ForceMode.Impulse);
-                forceApplied = true;  // Ensure force is applied only once per rotation cycle
-            }
-        }
+        angle = angle % 360;
+        if (angle > 180)
+            angle -= 360;
+        return angle;
     }
 }
-
