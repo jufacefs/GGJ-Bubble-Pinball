@@ -14,6 +14,8 @@ public class SceneScript : MonoBehaviour
     public string Instructions;
 
     public string Credits;
+
+    public string IntroScene;
     
     private void Awake()
     {
@@ -39,5 +41,10 @@ public class SceneScript : MonoBehaviour
     public void CreditsButton()
     {
         SceneManager.LoadScene(Credits);
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene(IntroScene);
     }
 }
