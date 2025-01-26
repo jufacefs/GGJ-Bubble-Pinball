@@ -14,6 +14,7 @@ public class BubbleScript : MonoBehaviour
     void Start()
     {
 
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,6 +39,14 @@ public class BubbleScript : MonoBehaviour
     {
         Debug.Log("Player Killed");
         GameManagerScript.S.PlayerDeath();
+        StartCoroutine(PopIt());
+
+    }
+
+    public IEnumerator PopIt()
+    {
+        animator.SetTrigger("PlayerDies");
+        yield return new WaitForSeconds(3f);
         Destroy(this.gameObject);
     }
 }

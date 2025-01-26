@@ -188,5 +188,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closedAngle: -30
   openedAngle: 30
-  motorSpeed: -250
-  motorForce: 1000
+  motorSpeed: -6000
+  motorForce: 4000
