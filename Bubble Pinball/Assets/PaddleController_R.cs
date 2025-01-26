@@ -13,8 +13,6 @@ public class PaddleController_R : MonoBehaviour
 
     private HingeJoint hinge;
     private JointMotor motor;
-    private AudioSource audioSource;
-    public AudioClip audioClip;
 
     // Define states for clarity
     private enum FlipperState { Idle, MovingUp, MovingDown }
@@ -26,7 +24,6 @@ public class PaddleController_R : MonoBehaviour
     {
         hinge = GetComponent<HingeJoint>();
         hinge.useMotor = false;
-        audioSource = GetComponent<AudioSource>();
 
         // Initialize the motor with force
         motor = hinge.motor;
@@ -53,8 +50,6 @@ public class PaddleController_R : MonoBehaviour
 
             motor.targetVelocity = motorSpeed;
             hinge.motor = motor;
-
-            audioSource.PlayOneShot(audioClip);
         }
 
         switch (currentState)

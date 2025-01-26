@@ -9,14 +9,10 @@ public class WallPaddleScript : MonoBehaviour
     public bool pushing;
     public float force;
 
-    private AudioSource audioSource;
-    public AudioClip audioClip;
-
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,8 +39,6 @@ public class WallPaddleScript : MonoBehaviour
                 Rigidbody bubble = collision.gameObject.GetComponent<Rigidbody>();
                 bubble.AddForce(transform.right * force);
             }
-
-            audioSource.PlayOneShot(audioClip);
         }
     }
 }

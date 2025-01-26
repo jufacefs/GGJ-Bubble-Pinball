@@ -2,12 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(HingeJoint))]
 public class PaddleController_L : MonoBehaviour
-
 {
-
-    private AudioSource audioSource;
-    public AudioClip audioClip;
-
     [Header("Angles")]
     public float closedAngle = 30f;
     public float openedAngle = -30f;
@@ -29,7 +24,6 @@ public class PaddleController_L : MonoBehaviour
     {
         hinge = GetComponent<HingeJoint>();
         hinge.useMotor = false;
-        audioSource = GetComponent<AudioSource>();
 
         // Initialize the motor with force
         motor = hinge.motor;
@@ -56,8 +50,6 @@ public class PaddleController_L : MonoBehaviour
 
             motor.targetVelocity = motorSpeed;
             hinge.motor = motor;
-
-            audioSource.PlayOneShot(audioClip);
         }
 
         switch (currentState)
