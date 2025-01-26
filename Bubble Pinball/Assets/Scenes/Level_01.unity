@@ -366,7 +366,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b3e8cb60a24eba4badddfc502c45f71, type: 3}
+<<<<<<< HEAD
 --- !u!1001 &168338068
+=======
+>>>>>>> c7d921907e10c7c01e09e778de4ad8064dd3312a
 --- !u!1001 &221092166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -377,12 +380,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 820655351495931245, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
       propertyPath: m_Name
+<<<<<<< HEAD
       value: Flipper
+=======
+>>>>>>> c7d921907e10c7c01e09e778de4ad8064dd3312a
       value: Flipper (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1838359999668357433, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< HEAD
       value: 3.25
+=======
+>>>>>>> c7d921907e10c7c01e09e778de4ad8064dd3312a
       value: -3.25
       objectReference: {fileID: 0}
     - target: {fileID: 1838359999668357433, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
@@ -395,7 +404,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1838359999668357433, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
       propertyPath: m_LocalRotation.w
+<<<<<<< HEAD
       value: 1
+=======
+>>>>>>> c7d921907e10c7c01e09e778de4ad8064dd3312a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1838359999668357433, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
@@ -416,7 +428,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1838359999668357433, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
+<<<<<<< HEAD
       value: 0
+=======
+>>>>>>> c7d921907e10c7c01e09e778de4ad8064dd3312a
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1838359999668357433, guid: a4a626618a62fb0449d25f1f0380228d, type: 3}
@@ -942,7 +957,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b3e8cb60a24eba4badddfc502c45f71, type: 3}
+<<<<<<< HEAD
       objectReference: {fileID: 0}
+=======
+>>>>>>> c7d921907e10c7c01e09e778de4ad8064dd3312a
 --- !u!1001 &1043426543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2831,6 +2849,10 @@ SceneRoots:
 <<<<<<< HEAD
   - {fileID: 1742882468}
   - {fileID: 1541632689}
+=======
+  - {fileID: 1801767465}
+  - {fileID: 221092166}
+>>>>>>> c7d921907e10c7c01e09e778de4ad8064dd3312a
 =======
   - {fileID: 1801767465}
   - {fileID: 221092166}
