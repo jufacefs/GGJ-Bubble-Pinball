@@ -16,6 +16,8 @@ public class SceneScript : MonoBehaviour
     public string Credits;
 
     public string IntroScene;
+
+    public string ChallengeLevel;
     
     private void Awake()
     {
@@ -46,5 +48,10 @@ public class SceneScript : MonoBehaviour
     public void BackButton()
     {
         SceneManager.LoadScene(IntroScene);
+    }
+
+    public void ChallengeButton()
+    {
+        SceneManager.LoadScene(ChallengeLevel);
     }
 }
