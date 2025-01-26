@@ -7,7 +7,7 @@ public class BubbleScript : MonoBehaviour
 
     public float bubbleSpeed;
 
-
+    private Animator animator;
 
 
     // Start is called before the first frame update
