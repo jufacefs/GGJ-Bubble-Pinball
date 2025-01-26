@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../GameJam"
+		},
+		{
+			"name": "GGJ-Bubble-Pinball",
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
