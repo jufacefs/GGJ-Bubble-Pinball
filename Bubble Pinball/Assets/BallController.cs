@@ -8,11 +8,13 @@ public class BallController : MonoBehaviour
     public float maxControlSpeed = 2f; // Maximum speed the player can control in horizontal direction
 
     private Rigidbody rb;
+  
 
     void Start()
     {
         // Get the Rigidbody component attached to the ball
         rb = GetComponent<Rigidbody>();
+        
     }
 
     void Update()

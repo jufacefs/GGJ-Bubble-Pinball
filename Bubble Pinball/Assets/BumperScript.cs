@@ -5,12 +5,17 @@ using UnityEngine;
 public class BumperScript : MonoBehaviour
 {
     private Animator animator;
+    private AudioSource audioSource;
+    public AudioClip audioClip;
     public float radius;
     public float power;
+  
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+       
     }
 
     // Update is called once per frame
@@ -31,11 +36,14 @@ public class BumperScript : MonoBehaviour
             if (bubble != null)
             {
                 bubble.AddExplosionForce(power, explosionPos, radius, 0.0F, ForceMode.VelocityChange);
+              
             }
             //give player stunned effect?
 
             //slowly shrink back to normal size
             animator.SetTrigger("PlayerHit");
+            // make a noise
+            audioSource.PlayOneShot(audioClip);
         }
     }
 }
