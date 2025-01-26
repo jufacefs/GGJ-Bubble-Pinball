@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DangerScript : MonoBehaviour
-{
+{   
+    private Animator animator;
     private AudioSource audioSource;
     public AudioClip audioClip;
-
 
     public int DangerType;
     // Start is called before the first frame update
     void Start()
     {
-         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class DangerScript : MonoBehaviour
             {
                 controller.BubblePop();
             }
+
             audioSource.PlayOneShot(audioClip);
         }
     }
